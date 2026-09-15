@@ -1,0 +1,24 @@
+{% extends "notes/base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="appbar">
+    <img src="{% static 'notes/img/logo-getit.png' %}" class="logo"/>
+    <span class="subtitle">Como o Post-it, mas com outro verbo</span>
+</div>
+<div class="espaco-tabela"> 
+    <table>
+        <tr>
+            <th>Tags</th>
+            <th>Anotações</th>
+        </tr>
+        {% for tag in tags%}
+        <tr>
+            <th>{{tag.title}}</th>
+            <th><a href="{{tag.id}}">notas</a></th>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+<script type="text/javascript" src="{% static 'notes/getit.js' %}"></script>
+{% endblock %}
