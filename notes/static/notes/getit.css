@@ -66,6 +66,7 @@ body {
   text-decoration: none;
   color: black;
   font-size: 14px;
+  max-width: 18rem;
 }
 
 .btn > * {
@@ -115,7 +116,7 @@ body {
     padding: 0.8%;
     margin: 0.4rem;
     box-shadow: 0 5px 8px rgba(0, 0, 0, 0.4);
-    min-height: 5rem;
+    min-height: 7rem;
     display: flex;
     flex-direction: column;
 }
@@ -377,4 +378,32 @@ body {
   align-items: center;
   justify-content: space-evenly;
   height: 40%;
+}
+
+.tags {
+  max-width:auto;
+  margin-top: 10px;
+  background-color: #f7d736;
+  border-radius: 4px;
+}
+
+.espaco-tabela {
+  display: flex;
+  justify-content: center;
+  margin: 10rem; 
+}
+
+.table,th,tr {
+  border: 1px solid black;
+  border-collapse: collapse;
+  background-color:#fae890;
+}
+
+.info-tag {
+  display: flex;
+  justify-content: space-between;
+}
+
+.notes-filtradas {
+  margin-top: 10rem;
 }

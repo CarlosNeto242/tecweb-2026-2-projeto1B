@@ -21,6 +21,7 @@
           name="detalhes"
           placeholder="Digite o conteúdo..."
         ></textarea>
+        <textarea class="autoresize" name="tag" placeholder="Digite a tag..."></textarea>
         <button class="btn" type="submit">Criar</button>
     </form>
     <div class="card-container">
@@ -29,7 +30,7 @@
             <div class="card-header">
                 <h3 class="card-title">{{note.title}}</h3>
                 <div class="acoes">
-                    <a href="confirm/{{note.id}}">
+                    <a href="delete/{{note.id}}">
                         <i class="bi bi-trash"></i>
                     </a>
                     <a href="edit/{{note.id}}">
@@ -40,9 +41,15 @@
             <div class="card-content">
                 <p>{{note.content}}</p>
             </div>
+            <div class="tags">
+                <p>{{note.tag.title}}</p>
+            </div>
         </div>
         {% endfor %}   
     </div>
 </main>
+<footer>
+    <a class="btn-cancelar" href="tags">Lista de tags</a>
+</footer>
 <script type="text/javascript" src="{% static 'notes/getit.js' %}"></script>
 {% endblock %}
