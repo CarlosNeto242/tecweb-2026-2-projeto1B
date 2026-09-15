@@ -12,8 +12,8 @@ def index(request):
             note.save()
             return redirect("index")
         else:
-            tag = Tag(title=f"#{tag_title}")
-            lista_tag_igual = Tag.objects.filter(title=f"#{tag_title}")
+            tag = Tag(title=tag_title)
+            lista_tag_igual = Tag.objects.filter(title=tag_title)
             if not lista_tag_igual:
                 tag.save()
             else: 
@@ -31,18 +31,19 @@ def delete(request, id):
 
 def edit(request, id):
     edit_note = Note.objects.get(id=id)
+    tag_antiga = edit_note.tag
+    objeto_tag_antiga = Tag.objects.get(id=tag_antiga.id)
     if request.method == "POST":
         edit_note.title = request.POST.get("titulo")
         edit_note.content = request.POST.get("detalhes")
-        tag_title = request.POST.get('tag')
-        
-        tag = Tag(title=f"#{tag_title}")
-        lista_tag_igual = Tag.objects.filter(title=f"#{tag_title}")
-        if not lista_tag_igual:
-            tag.save()
-        else: 
+        tag_title = request.POST.get('tag') 
+        tag = Tag(title=tag_title)
+        lista_tag_igual = Tag.objects.filter(title=tag_title)
+        if lista_tag_igual:
             tag = lista_tag_igual[0]
-
+        else: 
+            tag.save()
+            objeto_tag_antiga.delete()
         edit_note.tag = tag
         edit_note.save()
         return redirect("index")
