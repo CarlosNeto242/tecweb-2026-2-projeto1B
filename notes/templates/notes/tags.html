@@ -8,16 +8,20 @@
 </div>
 <div class="espaco-tabela"> 
     <table>
-        <tr>
-            <th>Tags</th>
-            <th>Anotações</th>
-        </tr>
-        {% for tag in tags%}
-        <tr>
-            <th>{{tag.title}}</th>
-            <th><a href="{{tag.id}}">notas</a></th>
-        </tr>
-        {% endfor %}
+        <thead> 
+            <tr class="title-table">
+                <th>Tags</th>
+                <th>Anotações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for tag in tags%}
+            <tr>
+                <th>{{tag.title}}</th>
+                <th><a href="{{tag.id}}">notas</a></th>
+            </tr>
+            {% endfor %}
+        </tbody>
     </table>
 </div>
 <script type="text/javascript" src="{% static 'notes/getit.js' %}"></script>
