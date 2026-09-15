@@ -381,10 +381,12 @@ body {
 }
 
 .tags {
-  max-width:auto;
-  margin-top: 10px;
-  background-color: #f7d736;
+  margin-top: 3rem;
+}
+
+.tag {
   border-radius: 4px;
+  background-color: #f7d736;
 }
 
 .espaco-tabela {
@@ -393,10 +395,23 @@ body {
   margin: 10rem; 
 }
 
-.table,th,tr {
-  border: 1px solid black;
-  border-collapse: collapse;
-  background-color:#fae890;
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, tr {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+tbody th:hover {
+  background-color: lightyellow;
+}
+
+.title-table {
+  background-color: #f7d736;
 }
 
 .info-tag {
@@ -406,4 +421,29 @@ body {
 
 .notes-filtradas {
   margin-top: 10rem;
+}
+
+footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  
+}
+.btn-listas {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Permanent Marker', cursive;
+  padding: 10px;
+  border-radius: 2px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+  background-color: #f7d736;
+  margin: 2%;
+  flex-grow: 1;
+  text-decoration: blue;
+  color: black;
+  font-size: 14px;
+  max-width: 6rem;
+  min-height: 3rem;
 }

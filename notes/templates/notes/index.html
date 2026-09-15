@@ -42,14 +42,14 @@
                 <p>{{note.content}}</p>
             </div>
             <div class="tags">
-                <p>{{note.tag.title}}</p>
+                <spam class="tag">{{note.tag.title}}</spam>
             </div>
         </div>
         {% endfor %}   
     </div>
+    <footer>
+        <a class="btn-listas" href="tags">Lista de tags</a>
+    </footer>
 </main>
-<footer>
-    <a class="btn-cancelar" href="tags">Lista de tags</a>
-</footer>
 <script type="text/javascript" src="{% static 'notes/getit.js' %}"></script>
 {% endblock %}
