@@ -39,11 +39,15 @@ def edit(request, id):
         tag_title = request.POST.get('tag') 
         tag = Tag(title=tag_title)
         lista_tag_igual = Tag.objects.filter(title=tag_title)
-        if lista_tag_igual:
+        if tag == objeto_tag_antiga:
             tag = lista_tag_igual[0]
         else: 
             tag.save()
-            objeto_tag_antiga.delete()
+            notas_com_tag_antiga = Note.objects.filter(tag=tag_antiga)
+            print(notas_com_tag_antiga)
+            print(notas_com_tag_antiga)
+            if len(notas_com_tag_antiga) <= 1:
+                objeto_tag_antiga.delete()
         edit_note.tag = tag
         edit_note.save()
         return redirect("index")
