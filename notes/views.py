@@ -32,25 +32,30 @@ def delete(request, id):
 def edit(request, id):
     edit_note = Note.objects.get(id=id)
     tag_antiga = edit_note.tag
-    objeto_tag_antiga = Tag.objects.get(id=tag_antiga.id)
-    nome_tag_antiga = tag_antiga.title
+    if tag_antiga:
+        objeto_tag_antiga = Tag.objects.get(id=tag_antiga.id)
+        nome_tag_antiga = tag_antiga.title
     if request.method == "POST":
         edit_note.title = request.POST.get("titulo")
         edit_note.content = request.POST.get("detalhes")
         tag_title = request.POST.get('tag') 
-        print(f"Título: {tag_title}")
-        tag = Tag(title=tag_title)
-        lista_tag_igual = Tag.objects.filter(title=tag_title)
-        if tag_title == nome_tag_antiga:
-            tag = lista_tag_igual[0]
+        if tag_title == "":
+            edit_note.tag = None
         else: 
-            tag.save()
-            notas_com_tag_antiga = Note.objects.filter(tag=tag_antiga)
-            print(notas_com_tag_antiga)
-            print(notas_com_tag_antiga)
-            if len(notas_com_tag_antiga) <= 1:
-                objeto_tag_antiga.delete()
-        edit_note.tag = tag
+            print(f"Título: {tag_title}")
+            tag = Tag(title=tag_title)
+            lista_tag_igual = Tag.objects.filter(title=tag_title)
+            if not (tag_title == nome_tag_antiga): # Se o usuário de fato mudou a tag...
+                if len(lista_tag_igual) >= 1:  # Se já existe no banco...
+                    tag = lista_tag_igual[0]
+                else: # Senão...
+                    tag.save()
+                    notas_com_tag_antiga = Note.objects.filter(tag=tag_antiga)
+                    print(notas_com_tag_antiga)
+                    print(notas_com_tag_antiga)
+                    if len(notas_com_tag_antiga) <= 1:
+                        objeto_tag_antiga.delete()
+                edit_note.tag = tag
         edit_note.save()
         return redirect("index")
     else:
