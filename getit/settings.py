@@ -75,20 +75,20 @@ WSGI_APPLICATION = 'getit.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/6.1/ref/settings/#databases
 
-DATABASES = {
-    'default': dj_database_url.config(
-        default='postgresql://getit_v84j_user:Qc1JabGV0yc5xoq90p3PL0Ou83uvhnih@dpg-dals8d2jnfac73al3nfg-a.oregon-postgres.render.com/getit_v84j',
-        conn_max_age=600,
-        ssl_require=not DEBUG
-    )
-}
-
 # DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
+#     'default': dj_database_url.config(
+#         default='postgresql://getit_v84j_user:Qc1JabGV0yc5xoq90p3PL0Ou83uvhnih@dpg-dals8d2jnfac73al3nfg-a.oregon-postgres.render.com/getit_v84j',
+#         conn_max_age=600,
+#         ssl_require=not DEBUG
+#     )
 # }
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
 
 
 # Password validation
